@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.0.0
+MinimumVisualStudioVersion = 10.0.0.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetPuff", "ProjetPuff/ProjetPuff.csproj", "{8EBAAEC0-6959-42C3-83E3-77C9BD2E7F5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{4AEB37E0-F73D-498E-9E9F-C0FAB33D7660}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{3151278A-A281-4AA3-8C7B-43B1B9F1614D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EBAAEC0-6959-42C3-83E3-77C9BD2E7F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EBAAEC0-6959-42C3-83E3-77C9BD2E7F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EBAAEC0-6959-42C3-83E3-77C9BD2E7F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EBAAEC0-6959-42C3-83E3-77C9BD2E7F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AEB37E0-F73D-498E-9E9F-C0FAB33D7660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AEB37E0-F73D-498E-9E9F-C0FAB33D7660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AEB37E0-F73D-498E-9E9F-C0FAB33D7660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AEB37E0-F73D-498E-9E9F-C0FAB33D7660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3151278A-A281-4AA3-8C7B-43B1B9F1614D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3151278A-A281-4AA3-8C7B-43B1B9F1614D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3151278A-A281-4AA3-8C7B-43B1B9F1614D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3151278A-A281-4AA3-8C7B-43B1B9F1614D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
