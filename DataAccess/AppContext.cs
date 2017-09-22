@@ -2,6 +2,7 @@
 using System.IO;
 using DataAccess.Entity;
 using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
@@ -166,7 +167,8 @@ namespace DataAccess
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Adress> Adresses { get; set; }
-
+        
         #endregion
+
     }
 }

@@ -24,6 +24,8 @@ namespace DataAccess.Entity
         
         public DateTime ReleaseDate { get; set; }
         
+        public TimeSpan TimeLength { get; set; }
+        
         public ICollection<MovieCategory> Categories { get; set; }
         
         public ICollection<Seance> Seances { get; set; }

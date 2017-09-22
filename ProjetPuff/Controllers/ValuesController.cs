@@ -23,10 +23,11 @@ namespace ProjetPuff.Controllers
         [HttpGet]
         public string Get()
         {
-            var test = _eventService.GetAllEvents();
-            var json = JsonConvert.SerializeObject(test);
-//            return new string[] {"value1", "value2"};
-            return json;
+//            var test = _eventService.GetAllEvents();
+//            var json = JsonConvert.SerializeObject(test);
+//            return json;
+            string retour = "value1" + "value2";
+            return retour;
         }
 
         // GET api/values/5
@@ -38,8 +39,9 @@ namespace ProjetPuff.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] string value)
         {
+            return Json(value);
         }
 
         // PUT api/values/5

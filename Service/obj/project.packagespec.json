@@ -1,0 +1,39 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/home/massa/work/projet fin de formation/Back/ProjetPuff/Service/Service.csproj",
+    "projectName": "Service",
+    "projectPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/Service/Service.csproj",
+    "outputPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/Service/obj/",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {
+          "/home/massa/work/projet fin de formation/Back/ProjetPuff/Common/Common.csproj": {
+            "projectPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/Common/Common.csproj"
+          },
+          "/home/massa/work/projet fin de formation/Back/ProjetPuff/DataAccess/DataAccess.csproj": {
+            "projectPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/DataAccess/DataAccess.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "target": "Package",
+          "version": "2.0.0"
+        },
+        "Microsoft.AspNetCore.All": {
+          "target": "Package",
+          "version": "2.0.0"
+        }
+      }
+    }
+  }
+}

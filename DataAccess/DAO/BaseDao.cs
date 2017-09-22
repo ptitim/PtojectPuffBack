@@ -8,5 +8,10 @@
         {
               context = new PuffContext();
         }
+
+        public void SaveChanges()
+        {
+            context.SaveChanges();
+        }
     }
 }

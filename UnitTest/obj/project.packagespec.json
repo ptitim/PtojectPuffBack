@@ -1,0 +1,50 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/home/massa/work/projet fin de formation/Back/ProjetPuff/UnitTest/UnitTest.csproj",
+    "projectName": "UnitTest",
+    "projectPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/UnitTest/UnitTest.csproj",
+    "outputPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/UnitTest/obj/",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {
+          "/home/massa/work/projet fin de formation/Back/ProjetPuff/DataAccess/DataAccess.csproj": {
+            "projectPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/DataAccess/DataAccess.csproj"
+          },
+          "/home/massa/work/projet fin de formation/Back/ProjetPuff/ProjetPuff/ProjetPuff.csproj": {
+            "projectPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/ProjetPuff/ProjetPuff.csproj"
+          },
+          "/home/massa/work/projet fin de formation/Back/ProjetPuff/Service/Service.csproj": {
+            "projectPath": "/home/massa/work/projet fin de formation/Back/ProjetPuff/Service/Service.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "target": "Package",
+          "version": "2.0.0"
+        },
+        "Microsoft.NET.Test.Sdk": {
+          "target": "Package",
+          "version": "15.3.0-preview-20170628-02"
+        },
+        "xunit": {
+          "target": "Package",
+          "version": "2.2.0"
+        },
+        "xunit.runner.visualstudio": {
+          "target": "Package",
+          "version": "2.2.0"
+        }
+      }
+    }
+  }
+}

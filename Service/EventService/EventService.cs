@@ -1,25 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using DataAccess.DAO;
 using DataAccess.Entity;
+using Newtonsoft.Json;
 using Service.DTO;
 
 namespace Service
 {
     public class EventService
     {
+        #region Properties
 
         private EventDao _eventDao;
+
+        #endregion
+
+        #region Ctor
 
         public EventService()
         {
             _eventDao = new EventDao();
         }
-        
+
+        #endregion
+
+
+        #region Methods Get
+
+        /// <summary>
+        /// Get all events ordered by date
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public List<EventDto> GetAllEvents()
         {
-            IEnumerable<Event> entities;
+            IEnumerable<Event> entities = new List<Event>();
             try
             {
                 entities = _eventDao.GetAllEvents();
@@ -27,31 +44,103 @@ namespace Service
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw e;
             }
 
-            List<EventDto> dtos = entities.Select(Extract).ToList();
+            List<EventDto> dtos = entities.Select(EventDto.Extract).ToList();
             return dtos;
         }
 
+        /// <summary>
+        /// Get all published events, ordered by date
+        /// </summary>
+        /// <returns></returns>
+        public List<EventDto> GetAllPublishedEvent()
+        {
+            IEnumerable<Event> entities = new List<Event>();
+            try
+            {
+                entities = _eventDao.GetAllPublishedEvent();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            List<EventDto> dtos = entities.Select(EventDto.Extract).ToList();
+            return dtos;
+        }
 
         /// <summary>
-        /// Extract event entity into event Dto
+        /// Get event by id
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="id"></param>
+        /// <param name="tr"></param>
         /// <returns></returns>
-        public EventDto Extract(Event entity)
+        public EventDto GetEventById(int? id, out Treatment tr)
         {
-            var dto = new EventDto();
+            tr = new Treatment();
 
-            if (entity == null) return dto;
+            if (!id.HasValue)
+            {
+                tr.AddFatalErrorWithCode(HttpStatusCode.BadRequest);
+                return null;
+            }
             
-            dto.Name = entity.Name;
-            dto.Date = entity.Date;
-            dto.Description = entity.Description;
-            dto.NumberMaxOfParticipant = entity.NbMaxOfParticipant;
+            var foundEvent = _eventDao.GetEventById(id.Value);
+            if (foundEvent == null)
+            {
+                tr.AddErrorWithCode(HttpStatusCode.NotFound);
+                return null;
+            }
+            
+            var eventDto = EventDto.Extract(foundEvent);
+            tr.AddObject(eventDto);
+            tr.AddObject("this is a test");
+            
+            return eventDto;
+        }
+
+        #endregion
+
+        #region Methods Set
+        
+        /// <summary>
+        /// Save event modification
+        /// Create a new one if none is found
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public EventDto SaveEvent(EventDto dto)
+        {
+            var evvent = _eventDao.GetEventById(dto.Id);
+            
+            var newEvent = EventDto.Populate(dto, evvent);
+            
+            // Check if event is new
+            if(evvent == null)
+                _eventDao.AddEvent(newEvent);
+            
+            _eventDao.SaveChanges();
+            
+            dto = EventDto.Extract(newEvent);
 
             return dto;
         }
+
+//        public Event CreateEvent(string name, DateTime date,int? nbMax, bool isPublished )
+//        {
+//            var ev = new EventDto(name, date, nbMax, isPublished );
+//
+//            var newEvent = EventDto.Populate(ev);
+//            
+//            _eventDao.AddEvent(newEvent);
+//
+//            return newEvent;
+//        }
+        
+
+        #endregion
+
+
     }
 }
