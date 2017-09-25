@@ -10,7 +10,6 @@ namespace ProjetPuff.Controllers
     [Route("api/[controller]")]
     public class EventController : Controller
     {
-        
         private readonly EventService _eventService;
 
 
@@ -18,13 +17,12 @@ namespace ProjetPuff.Controllers
         {
             _eventService = new EventService();
         }
-        
+
         // GET api/event
         [HttpGet(Name = "GetEvents")]
         public JsonResult Index()
         {
             var events = _eventService.GetAllPublishedEvent();
-//            var json = JsonConvert.SerializeObject(events);
 
             return Json(events);
         }
@@ -41,32 +39,16 @@ namespace ProjetPuff.Controllers
         /// <summary>
         /// Create new event
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="date"></param>
-        /// <param name="isPublished"></param>
-        /// <param name="nbmax"></param>
-        /// <returns></returns>
         // Post api/event
         [HttpPost]
         public IActionResult Post([FromBody] EventDto dto)
         {
-//            DateTime parsedDate;
-//            DateTime.TryParse(date, out parsedDate);
-//            var parsedDate = DateTime.UtcNow;
-//            var nbmax = 12;
-//            var isPublished = true;
-//            
-//            Event evvent = _eventService.CreateEvent(name, parsedDate, nbmax, isPublished);
-            EventDto evvent = _eventService.SaveEvent(dto);
-            
-            if (evvent != null)
-                return CreatedAtRoute("Get", new {id = evvent.Id });
-            else
-                return BadRequest();
-            return Json(dto);
+            Treatment tr;
+            EventDto evvent = _eventService.SaveEvent(dto, out tr);
 
+            if (evvent == null) return BadRequest();
+            
+            return CreatedAtRoute("GetEvent", new {id = evvent.Id}, evvent);
         }
-        
-        
     }
 }

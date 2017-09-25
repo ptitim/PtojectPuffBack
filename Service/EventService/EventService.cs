@@ -95,7 +95,6 @@ namespace Service
             
             var eventDto = EventDto.Extract(foundEvent);
             tr.AddObject(eventDto);
-            tr.AddObject("this is a test");
             
             return eventDto;
         }
@@ -110,9 +109,17 @@ namespace Service
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public EventDto SaveEvent(EventDto dto)
+        public EventDto SaveEvent(EventDto dto, out Treatment tr)
         {
-            var evvent = _eventDao.GetEventById(dto.Id);
+            tr = new Treatment();
+
+            if (dto == null)
+            {
+                tr.AddErrorWithCode(HttpStatusCode.BadRequest);
+                return null;
+            }
+            
+             var evvent = _eventDao.GetEventById(dto.Id);
             
             var newEvent = EventDto.Populate(dto, evvent);
             

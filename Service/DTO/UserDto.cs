@@ -5,9 +5,9 @@ using DataAccess.Entity;
 
 namespace Service.DTO
 {
-    public class UserDto
+    public class UserDto : IDto
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
         
         public string Pseudo { get; private set; }
         

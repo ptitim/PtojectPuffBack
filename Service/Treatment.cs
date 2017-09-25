@@ -5,6 +5,7 @@ using System.Net;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.CodeAnalysis;
 using Newtonsoft.Json;
+using Service.DTO;
 
 namespace Service
 {
@@ -15,7 +16,9 @@ namespace Service
     public class Treatment
     {
         #region Properties
-
+        
+        public HttpStatusCode StatusCode { get; private set; }
+        
         /// <summary>
         /// List of fatal errors
         /// </summary>
@@ -40,7 +43,7 @@ namespace Service
         /// List of object to return
         /// Json format
         /// </summary>
-        public List<object> Objects { get; set; }
+        public List<IDto> Objects { get; set; }
 
         #endregion
 
@@ -53,7 +56,7 @@ namespace Service
             Warnings = new List<TreatmentEvent>();
             Info = new List<TreatmentEvent>();
             
-            Objects = new List<object>();
+            Objects = new List<IDto>();
         }
 
         #endregion
@@ -63,34 +66,38 @@ namespace Service
         /// <summary>
         /// Add a fatal error to treament with http code
         /// </summary>
-        /// <param name="htttpcode"></param>
+        /// <param name="httpcode"></param>
         /// <param name="message"></param>
-        public void AddFatalErrorWithCode(HttpStatusCode htttpcode, string message = null)
+        public void AddFatalErrorWithCode(HttpStatusCode httpcode, string message = null)
         {
-            var tre = new TreatmentEvent(MessagesType.FatalError, htttpcode, message);
+            var tre = new TreatmentEvent(MessagesType.FatalError, httpcode, message);
+            StatusCode = httpcode;
             FatalErrors.Add(tre);
         }
 
         /// <summary>
         /// Add an error to treatment with http code
         /// </summary>
-        /// <param name="htttpcode"></param>
+        /// <param name="httpcode"></param>
         /// <param name="message"></param>
-        public void AddErrorWithCode(HttpStatusCode htttpcode, string message = null)
+        public void AddErrorWithCode(HttpStatusCode httpcode, string message = null)
         {
-            var tre = new TreatmentEvent(MessagesType.Error, htttpcode, message);
+            var tre = new TreatmentEvent(MessagesType.Error, httpcode, message);
+            StatusCode = httpcode;
             Errors.Add(tre);
         }
 
-        public void AddWarning(HttpStatusCode httpcode, string message)
+        public void AddWarningWithCode(HttpStatusCode httpcode, string message)
         {
             var tre = new TreatmentEvent(MessagesType.Warning, httpcode, message);
+            StatusCode = httpcode;
             Warnings.Add(tre);
         }
 
         public void AddInfoWithCode(HttpStatusCode httpcode, string message = null)
         {
             var tre = new TreatmentEvent(MessagesType.Info, httpcode, message);
+            StatusCode = httpcode;
             Info.Add(tre);
         }
 
@@ -123,14 +130,14 @@ namespace Service
 
         #region Object gestion
 
-        public void AddObject(object obj)
+        public void AddObject(IDto obj)
         {
             Objects.Add(obj);
         }
 
         public void ClearObject()
         {
-            Objects = new List<object>();
+            Objects = new List<IDto>();
         }
 
         #endregion
@@ -164,22 +171,7 @@ namespace Service
             
             return newTr;
         }
-
-//        /// <summary>
-//        /// Merge two json to make it coherent
-//        /// </summary>
-//        /// <param name="sourceA"></param>
-//        /// <param name="sourceB"></param>
-//        /// <returns></returns>
-//        private static string MergeObjects(List<object> sourceA, List<object>sourceB)
-//        {
-//            var objectA = JsonConvert.DeserializeObject(sourceA);
-//            var objectB = JsonConvert.DeserializeObject(sourceB);
-//            var test = new List<object>() {objectA, objectB};
-//
-//            return JsonConvert.SerializeObject(test);
-//        }
-//        
+     
         #endregion
 
         #region Check

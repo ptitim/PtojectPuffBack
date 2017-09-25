@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DataAccess.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Expressions;
 
 namespace DataAccess.DAO
 {

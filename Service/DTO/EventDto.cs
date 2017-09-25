@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using DataAccess.Entity;
 
 namespace Service.DTO
 {
-    public class EventDto
+    public class EventDto : IDto
     {
         #region Properties
 
@@ -14,17 +15,17 @@ namespace Service.DTO
         public string Name { get; set; }
 
         public string Description { get; set; }
-
+        
         public DateTime Date { get; set; }
 
         public string Resume { get; set; }
-
+        
         public int NumberMaxOfParticipant { get; set; }
 
         public string RendezVousPoint { get; set; }
-
+        
         public bool IsPublished { get; set; }
-
+        
         public int IdCreator { get; set; }
 
         public List<SeanceDto> Seance { get; set; }
