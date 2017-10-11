@@ -130,21 +130,83 @@ namespace Service
             _eventDao.SaveChanges();
             
             dto = EventDto.Extract(newEvent);
+            tr.AddObject(dto);
 
             return dto;
         }
-
-//        public Event CreateEvent(string name, DateTime date,int? nbMax, bool isPublished )
-//        {
-//            var ev = new EventDto(name, date, nbMax, isPublished );
-//
-//            var newEvent = EventDto.Populate(ev);
-//            
-//            _eventDao.AddEvent(newEvent);
-//
-//            return newEvent;
-//        }
         
+        /// <summary>
+        /// Delete event
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tr"></param>
+        public void DeleteEvent(int id, out Treatment tr)
+        {
+            tr = new Treatment();
+            Event entity = null;
+            
+            // Get event
+            try
+            {
+                entity = _eventDao.GetEventById(id);
+            }
+            catch (Exception exception)
+            {
+                tr.AddErrorWithCode(HttpStatusCode.NotFound, exception.ToString());
+            }
+
+            // try to delete event
+            if (entity != null)
+            {
+                _eventDao.DeleteEvent(entity);
+                tr.AddInfoWithCode(HttpStatusCode.NoContent, "Event has been deleted with success");
+                _eventDao.SaveChanges();
+            }
+            else
+            {
+                tr.AddErrorWithCode(HttpStatusCode.NotFound, "Event has not been found");
+            }
+
+        }
+
+        /// <summary>
+        /// Update an event
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="tr"></param>
+        public void UpdateEvent(EventDto dto, out Treatment tr)
+        {
+            tr = new Treatment();
+            
+            Event entity;
+            
+            try
+            {
+                entity = _eventDao.GetEventById(dto.Id);
+            }
+            catch(Exception ex)
+            {
+                tr.AddErrorWithCode(HttpStatusCode.NotFound, ex.ToString());
+                return;
+            }
+
+            if (entity != null)
+            {
+
+                EventDto.Populate(dto, entity);
+
+                _eventDao.SaveChanges();
+
+                var updatedEvent = EventDto.Extract(entity);
+
+                tr.AddObject(updatedEvent);
+                tr.AddInfoWithCode(HttpStatusCode.Accepted, "Data updated with success");
+            }
+            else
+            {
+                tr.AddErrorWithCode(HttpStatusCode.NotFound, "Event has not been found");
+            }
+        }
 
         #endregion
 

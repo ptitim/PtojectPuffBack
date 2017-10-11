@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using DataAccess.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Expressions;
@@ -128,6 +129,13 @@ namespace DataAccess.DAO
         public void DeleteEvent(Event entity)
         {
             context.Events.Remove(entity);
+        }
+
+        public void DeleteEvent(int id)
+        {
+            var entity = context.Events.Find(id);
+            if(entity != null)
+                context.Events.Remove(entity);
         }
     }
 }

@@ -15,17 +15,17 @@ namespace Service.DTO
         public string Name { get; set; }
 
         public string Description { get; set; }
-        
+
         public DateTime Date { get; set; }
 
         public string Resume { get; set; }
-        
+
         public int NumberMaxOfParticipant { get; set; }
 
         public string RendezVousPoint { get; set; }
-        
-        public bool IsPublished { get; set; }
-        
+
+        public bool? IsPublished { get; set; }
+
         public int IdCreator { get; set; }
 
         public List<SeanceDto> Seance { get; set; }
@@ -79,16 +79,32 @@ namespace Service.DTO
 
         public static Event Populate(EventDto dto, Event entity = null, int? creatorId = null)
         {
+            // create new event if none exists
             if (entity == null)
                 entity = new Event();
+            
+            // Populate data
+            if (!string.IsNullOrEmpty(dto.Name))
+                entity.Name = dto.Name;
 
-            entity.Name = dto.Name;
-            entity.Date = dto.Date;
-            entity.Description = dto.Description;
-            entity.NbMaxOfParticipant = dto.NumberMaxOfParticipant;
-            entity.Resume = dto.Resume;
-            entity.RendezVousPoint = dto.RendezVousPoint;
+            if (dto.Date != default(DateTime))
+                entity.Date = dto.Date;
 
+            if (!string.IsNullOrEmpty(dto.Description))
+                entity.Description = dto.Description;
+
+            if (dto.NumberMaxOfParticipant != default(int))
+                entity.NbMaxOfParticipant = dto.NumberMaxOfParticipant;
+
+            if (!string.IsNullOrEmpty(dto.Resume))
+                entity.Resume = dto.Resume;
+
+            if (!string.IsNullOrEmpty(dto.RendezVousPoint))
+                entity.RendezVousPoint = dto.RendezVousPoint;
+
+            if (dto.IsPublished.HasValue)
+                entity.IsPublished = dto.IsPublished.Value;
+            
             if (dto.Seance != null && dto.Seance.Any())
             {
                 foreach (var seanceDto in dto.Seance)
@@ -104,8 +120,7 @@ namespace Service.DTO
                     }
                 }
             }
-            if (creatorId != null)
-                entity.IdCreator = creatorId.Value;
+
 
             return entity;
         }

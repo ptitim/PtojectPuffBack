@@ -30,8 +30,7 @@ namespace ProjetPuff.Controllers
         [HttpGet("{id}", Name = "GetEvent")]
         public JsonResult Index(int id)
         {
-            Treatment treatment;
-            _eventService.GetEventById(id, out treatment);
+            _eventService.GetEventById(id, out var treatment);
 
             return Json(treatment);
         }
@@ -39,16 +38,44 @@ namespace ProjetPuff.Controllers
         /// <summary>
         /// Create new event
         /// </summary>
-        // Post api/event
-        [HttpPost]
-        public IActionResult Post([FromBody] EventDto dto)
+        [HttpPost("create")]
+        public IActionResult Create([FromBody] EventDto dto)
         {
             Treatment tr;
             EventDto evvent = _eventService.SaveEvent(dto, out tr);
 
             if (evvent == null) return BadRequest();
             
-            return CreatedAtRoute("GetEvent", new {id = evvent.Id}, evvent);
+//            return CreatedAtRoute("GetEvent", new {id = evvent.Id}, tr);
+            return Json(tr);
+        }
+    
+        /// <summary>
+        /// Delete event
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Treatment tr;
+            _eventService.DeleteEvent(id , out tr);
+
+            return Json(tr);
+        }
+
+        [HttpPatch]
+        public IActionResult UpdateEvent([FromBody] EventDto dto)
+        {
+            if (dto == null)
+            {
+                return BadRequest();
+            }
+            
+            _eventService.UpdateEvent(dto, out Treatment tr);
+
+            return Json(tr);
+
         }
     }
 }

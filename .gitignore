@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+Supprimerait .idea/.idea.ProjetPuff/.idea/dataSources/24ba1246-5852-4817-ad45-92a12434abf0/_src_/
+Supprimerait .idea/.idea.ProjetPuff/.idea/dataSources/24ba1246-5852-4817-ad45-92a12434abf0/_staging_/
+Supprimerait Common/Enum/
+Supprimerait Common/wwwroot/
+Supprimerait DataAccess/wwwroot/
+Supprimerait ProjetPuff/wwwroot/
+Supprimerait Service/wwwroot/
+Supprimerait Test/bin/
+Supprimerait Test/wwwroot/

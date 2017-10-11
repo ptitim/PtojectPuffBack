@@ -38,7 +38,7 @@ namespace DataAccess.Entity
 
         public Adress Adress { get; set; }
 
-        public int IdCreator { get; set; }
+//        public int IdCreator { get; set; }
         public User Creator { get; set; }
 
         public ICollection<EventParticipants> Participants { get; set; }
