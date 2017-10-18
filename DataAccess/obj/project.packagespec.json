@@ -78,7 +78,12 @@
           "target": "Package",
           "version": "1.1.2"
         }
-      }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
     }
   }
 }

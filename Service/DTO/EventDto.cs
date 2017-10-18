@@ -70,14 +70,14 @@ namespace Service.DTO
 
             dto.NumberMaxOfParticipant = entity.NbMaxOfParticipant;
             dto.RendezVousPoint = entity.RendezVousPoint;
-            dto.IdCreator = entity.IdCreator;
+//            dto.IdCreator = entity.IdCreator;
 
             dto.Seance = SeanceDto.Extract(entity.Seances);
 
             return dto;
         }
 
-        public static Event Populate(EventDto dto, Event entity = null, int? creatorId = null)
+        public static Event Populate(EventDto dto, Event entity = null, User creator = null)
         {
             // create new event if none exists
             if (entity == null)
@@ -104,6 +104,9 @@ namespace Service.DTO
 
             if (dto.IsPublished.HasValue)
                 entity.IsPublished = dto.IsPublished.Value;
+
+            if (dto.IdCreator != null)
+                entity.Creator = creator;
             
             if (dto.Seance != null && dto.Seance.Any())
             {

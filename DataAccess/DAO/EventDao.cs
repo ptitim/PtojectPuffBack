@@ -40,6 +40,7 @@ namespace DataAccess.DAO
         /// else following the date
         /// </summary>
         /// <param name="date"></param>
+        /// <param name="before"></param>
         /// <returns></returns>
         public IEnumerable<Event> GetEventByDate(DateTime date, bool before)
         {
@@ -79,7 +80,7 @@ namespace DataAccess.DAO
                 query = query.Where(e => e.Date < endDate);
 
             if (creatorId.HasValue)
-                query = query.Where(e => e.IdCreator == creatorId);
+                query = query.Where(e => e.Creator.Id == creatorId);
 
             if (seanceId.HasValue)
                 query = query.Where(e => e.Seances.Any(s => s.SeanceId == seanceId));

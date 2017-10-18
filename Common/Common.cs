@@ -1,4 +1,6 @@
-﻿namespace Common
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+namespace Common
 {
     public class Common
     {
@@ -7,6 +9,14 @@
         public const string Admin = "Amdin" ;
 
         public const string BaseUser = "BaseUser";
+        
+
+        #endregion
+
+        #region Cryptos
+
+        public const string Salt = "ProjectPuff";
+
 
         #endregion
     }

@@ -30,6 +30,10 @@
           "target": "Package",
           "version": "2.0.0"
         },
+        "Microsoft.AspNetCore.Authentication.JwtBearer": {
+          "target": "Package",
+          "version": "2.0.0"
+        },
         "Microsoft.EntityFrameworkCore": {
           "target": "Package",
           "version": "2.0.0"
@@ -63,11 +67,24 @@
           "target": "Package",
           "version": "2.0.0"
         },
+        "Microsoft.Extensions.Configuration.UserSecrets": {
+          "target": "Package",
+          "version": "2.0.0"
+        },
+        "Microsoft.Extensions.SecretManager.Tools": {
+          "target": "Package",
+          "version": "2.0.0"
+        },
         "Swashbuckle.AspNetCore": {
           "target": "Package",
           "version": "1.0.0"
         }
-      }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
     }
   }
 }

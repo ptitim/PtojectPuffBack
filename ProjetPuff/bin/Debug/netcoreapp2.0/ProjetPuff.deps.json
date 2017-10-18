@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "97ae5b6fa662bb7643da24c372539e671d2043a1"
+    "signature": "d991cde689c7929b68db0c862b9d22ed4f8a415a"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,7 @@
       "ProjetPuff/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.0",
           "Microsoft.EntityFrameworkCore": "2.0.0",
           "Microsoft.EntityFrameworkCore.Design": "2.0.0",
           "Microsoft.EntityFrameworkCore.Relational": "2.0.0",
@@ -32,6 +33,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer.Design": "2.0.0-preview1-final",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
           "Microsoft.EntityFrameworkCore.Tools.DotNet": "2.0.0",
+          "Microsoft.Extensions.Configuration.UserSecrets": "2.0.0",
+          "Microsoft.Extensions.SecretManager.Tools": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
           "Service": "1.0.0",
           "Swashbuckle.AspNetCore": "1.0.0"
@@ -2244,6 +2247,18 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Microsoft.Extensions.SecretManager.Tools/2.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.UserSecrets": "2.0.0",
+          "Microsoft.NETCore.App": "2.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/dotnet-user-secrets.dll": {}
+        },
+        "compile": {
+          "lib/netcoreapp2.0/dotnet-user-secrets.dll": {}
         }
       },
       "Microsoft.Extensions.WebEncoders/2.0.0": {
@@ -5763,6 +5778,13 @@
       "sha512": "sha512-ukg53qNlqTrK38WA30b5qhw0GD7y3jdI9PHHASjdKyTcBHTevFM2o23tyk3pWCgAV27Bbkm+CPQ2zUe1ZOuYSA==",
       "path": "microsoft.extensions.primitives/2.0.0",
       "hashPath": "microsoft.extensions.primitives.2.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.SecretManager.Tools/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YojQ+ZAn+pHY7QVNgT4FDxCy9OW5JJ4FN2LdofTEmsp9/WKFW9vb//b+3UFMzTourwZoxfB1cdwCC1z2/+LJ/A==",
+      "path": "microsoft.extensions.secretmanager.tools/2.0.0",
+      "hashPath": "microsoft.extensions.secretmanager.tools.2.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.WebEncoders/2.0.0": {
       "type": "package",

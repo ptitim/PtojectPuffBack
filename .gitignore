@@ -8,3 +8,7 @@ Supprimerait ProjetPuff/wwwroot/
 Supprimerait Service/wwwroot/
 Supprimerait Test/bin/
 Supprimerait Test/wwwroot/
+/ProjetPuff/client_id.json
+
+Supprimerait .idea/.idea.ProjetPuff/.idea/indexLayout.xml
+Supprimerait ProjetPuff/client_id.json

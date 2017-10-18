@@ -1,8 +1,10 @@
-﻿namespace DataAccess.DAO
+﻿using Service.Interface;
+
+namespace DataAccess.DAO
 {
-    public abstract class BaseDao
+    public abstract class BaseDao : IBaseDao
     {
-        protected PuffContext context;
+        protected readonly PuffContext context;
 
         protected BaseDao()
         {

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Security.Cryptography.Xml;
 using DataAccess.Entity;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging.AzureAppServices.Internal;
+using Microsoft.IdentityModel.Protocols;
 
 namespace DataAccess
 {
@@ -11,14 +14,15 @@ namespace DataAccess
     {
         protected HostingApplication.Context context;
 
+        public DbContextOptions ContextOptions;
+        
         public PuffContext()
         {
         }
 
-//        public PuffContext(DbContextOptions<PuffContext> options) : base(options)
-//        {
-//            
-//        }
+        public PuffContext(DbContextOptions<PuffContext> options) : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

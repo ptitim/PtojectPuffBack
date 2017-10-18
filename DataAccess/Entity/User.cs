@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.Entity
@@ -28,7 +29,15 @@ namespace DataAccess.Entity
         
         [Required]
         [MaxLength(256)]
+        public string Salt { get; set; }
+        
+        [Required]
+        [MaxLength(256)]
         public string Roles { get; set;  }
+        
+        public bool RemenberMe { get; set; }
+        
+        public DateTime CreationDate { get; set; }
         
         public InfoUser InfoUser { get; set; }
         

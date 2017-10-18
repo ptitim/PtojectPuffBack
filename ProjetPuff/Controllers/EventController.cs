@@ -63,8 +63,13 @@ namespace ProjetPuff.Controllers
 
             return Json(tr);
         }
-
-        [HttpPatch]
+        
+        /// <summary>
+        /// update event
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpPatch("{id}")]
         public IActionResult UpdateEvent([FromBody] EventDto dto)
         {
             if (dto == null)

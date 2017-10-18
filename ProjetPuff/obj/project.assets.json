@@ -2389,6 +2389,19 @@
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
+      "Microsoft.Extensions.SecretManager.Tools/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.UserSecrets": "2.0.0",
+          "Microsoft.NETCore.App": "2.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp2.0/dotnet-user-secrets.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/dotnet-user-secrets.dll": {}
+        }
+      },
       "Microsoft.Extensions.WebEncoders/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -7479,6 +7492,18 @@
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
         "microsoft.extensions.primitives.2.0.0.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.SecretManager.Tools/2.0.0": {
+      "sha512": "YojQ+ZAn+pHY7QVNgT4FDxCy9OW5JJ4FN2LdofTEmsp9/WKFW9vb//b+3UFMzTourwZoxfB1cdwCC1z2/+LJ/A==",
+      "type": "package",
+      "path": "microsoft.extensions.secretmanager.tools/2.0.0",
+      "files": [
+        "lib/netcoreapp2.0/dotnet-user-secrets.dll",
+        "lib/netcoreapp2.0/dotnet-user-secrets.runtimeconfig.json",
+        "microsoft.extensions.secretmanager.tools.2.0.0.nupkg.sha512",
+        "microsoft.extensions.secretmanager.tools.nuspec",
+        "prefercliruntime"
       ]
     },
     "Microsoft.Extensions.WebEncoders/2.0.0": {
@@ -14073,6 +14098,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.0",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.0.0",
       "Microsoft.EntityFrameworkCore >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Relational >= 2.0.0",
@@ -14081,6 +14107,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer.Design >= 2.0.0-preview1-final",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Tools.DotNet >= 2.0.0",
+      "Microsoft.Extensions.Configuration.UserSecrets >= 2.0.0",
+      "Microsoft.Extensions.SecretManager.Tools >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "Service >= 1.0.0",
       "Swashbuckle.AspNetCore >= 1.0.0"
@@ -14138,6 +14166,10 @@
             "target": "Package",
             "version": "2.0.0"
           },
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "2.0.0"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "2.0.0"
@@ -14167,6 +14199,14 @@
             "version": "2.0.0"
           },
           "Microsoft.EntityFrameworkCore.Tools.DotNet": {
+            "target": "Package",
+            "version": "2.0.0"
+          },
+          "Microsoft.Extensions.Configuration.UserSecrets": {
+            "target": "Package",
+            "version": "2.0.0"
+          },
+          "Microsoft.Extensions.SecretManager.Tools": {
             "target": "Package",
             "version": "2.0.0"
           },
